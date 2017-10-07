@@ -11,49 +11,63 @@ void main()
 	int y;
 	int z;
 
-
-	cout << "Enter a number: ";
-	cin >> x;
-	cout << "Select an operator: ";
-	cin >> Op;
-	cout << "Select another number: ";
-	cin >> y;
-		switch (Op)
+	cout << "\t\tCalculator" << endl;
+	while (true)
+		{
+		cout << "Enter a number: ";
+		cin >> x;
+			while (true)
+			{
+				cout << "Select an operator: ";
+				cin >> Op;
+				if ((Op == '+') || (Op == '-') || (Op == '*') || (Op == '/') || (Op == 'C') || (Op == 'c') || (Op == 'X') || (Op == 'x'))
 				{
-				case '+':
-					x = x + y;
-					break;
-				case '-':
-					x = x - y;
-					break;
-				case '*':
-					x = x * y;
-					break;
-				case '/':
-					if (y == 0)
+					cout << "Select another number: ";
+					cin >> y;
+					switch (Op)
 					{
-						cout << "You cannot divide by zero. Please try again." << endl;
+					case '+':
+						x = x + y;
 						break;
+					case '-':
+						x = x - y;
+						break;
+					case '*':
+						x = x * y;
+						break;
+					case '/':
+						if (y == 0)
+							cout << "You cannot divide by zero. Please try again.\n" << endl;
+						else
+							x = x / y;
+						break;
+					case 'C':
+						Op = 'C';
+						break;
+					case 'c':
+						Op = 'c';
+						break;
+					case 'x':
+						Op = 'x';
+						break;
+					case 'X':
+						Op = 'X';
+						break;
+					default:
+						cout << "You have entered an incorrect operator. Please try again." << endl;
 					}
-					else
-						x = x / y;
+					if ((Op == '/') && (y == 0))
+						break;
+					else;
+					cout << x << endl;
+				}
+				else
+				{
+					cout << "You have selected an invalid operator. Please start over.\n" << endl;
 					break;
-				case 'C':
-					Op = 'C';
-					break;
-				case 'c':
-					Op = 'c';
-					break;
-				case 'x':
-					Op = 'x';
-					break;
-				case 'X':
-					Op = 'X';
-					break;
-				default:
-					cout << "You have entered an incorrect operator. Please try again." << endl;
-				}  
-	cout << x << endl;
+				}
+			}
+		}
 
 
 
