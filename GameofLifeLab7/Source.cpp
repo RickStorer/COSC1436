@@ -11,12 +11,12 @@ void main()
 {
 	const	int		NumRows (60);
 	const	int		NumCols (60);
-	const	time_t	WaitTime(5);
+	const	time_t	WaitTime(3);
 
 			bool	Board [NumRows + 2] [NumCols + 2];
 			bool	Next [NumRows + 2] [NumCols + 2];
 
-			time_t	CurrTime = 0;
+			time_t	CurrTime;
 
 			int		Generation;
 			int		NumNeighbors;
@@ -28,7 +28,7 @@ void main()
 
 			memset (Board, false, ((NumRows + 2) * (NumCols + 2) * sizeof (bool)));
 
-			cout << "Welcome to the game of life.\nThe game will be set up on a 60 x 60 board.\nTo get started you will need to select which cells on the board are alive.\n\nOnce you are satisfied with your entries set the row and column to -1,-1 then press a key to begin.\n" << endl;
+			cout << "Welcome to the game of life.\nThe game will be set up on a 60 x 60 board.\nTo get started you will need to select which cells on the board are alive.\n\nOnce you are satisfied with your entries set the row and column to -1,-1 to begin.\n" << endl;
 			cout << "Select a row: ";
 			cin >> x;
 			cout << "Select a column: ";
@@ -37,7 +37,7 @@ void main()
 					cout << "At least one cell must be alive to begin." << endl;
 				else;
 			if ((x < 1) || (x > 60) || (y < 1) || (y > 60))
-					cout << "Each row and colum must be from 1 to 60. Please try again." << endl;
+					cout << "Each row and colum must be a value from 1 to 60. Please try again.\n" << endl;
 				else
 					{
 					Board[x][y] = true;
@@ -51,14 +51,15 @@ void main()
 				cin >> y;
 				if ((x == -1) && (y == -1))
 						{
-						cout << "\nThe game of life is ready to begin. ";
-						system("pause");
+						cout << "\nThe game of life will begin shortly. ";
+						CurrTime = time(0);
+						while (time(0) < (CurrTime + WaitTime));
 						system("cls");
 						break;
 						}
 					else;
 				if ((x < 1) || (x > 60) || (y < 1) || (y > 60))
-						cout << "Each row and colum must be from 1 to 60. Please try again.\n" << endl;
+						cout << "Each row and colum must be a value from 1 to 60. Please try again.\n" << endl;
 					else
 						{
 						Board[x][y] = true;
@@ -67,7 +68,7 @@ void main()
 				}
 			for (Generation = 0; ; Generation++)
 				{
-				cout << "\tGeneration: " << Generation << "\tPress any key to end the program." << endl;
+				cout << "\n\tGeneration: " << Generation << "\tPress any key to end the program." << endl;
 				for (Row = 1; Row <= NumRows; Row++)
 					{
 					for (Col = 1; Col <= NumCols; Col++)
