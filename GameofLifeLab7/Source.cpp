@@ -1,3 +1,12 @@
+//**************************************************************************
+//
+//DESCRIPTION: Programming exercise seven COSC 1436.S01 –Lab 7
+//CLASS: COSC 1436.S01
+//AUTHOR: Roderick Storer
+//DATE: Oct 2017
+//
+//**************************************************************************
+
 #include <iostream>
 
 using namespace std;
@@ -28,7 +37,7 @@ void main()
 
 			memset (Board, false, ((NumRows + 2) * (NumCols + 2) * sizeof (bool)));
 
-			cout << "Welcome to the game of life.\nThe game will be set up on a 60 x 60 board.\nTo get started you will need to select which cells on the board are alive.\n\nOnce you are satisfied with your entries set the row and column to -1,-1 to begin.\n" << endl;
+			cout << "Welcome to the game of life.\nThe game will be set up on a 60 x 60 board.\n\nThe rules are as follows:\n1. A cell dies from overcrowding when it has 4 or more neighbors next to it.\n2. A cell dies from lonliness when it has 1 or fewer neighbors next to it.\n3. An empty cell becomes alive when it has exactly 3 neighbors.\n4. All other cells remain unchanged.\n\nTo get started you will need to select which cells on the board start as alive.\n\nOnce you are satisfied with your entries set the row and column to -1,-1 to begin the game of life.\n" << endl;
 			cout << "Select a row: ";
 			cin >> x;
 			cout << "Select a column: ";
