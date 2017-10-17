@@ -5,6 +5,6 @@ double Add(double, double);
 double Sub(double, double);
 double Mult(double, double);
 double Div(double, double);
-double ReadInteger();
+bool IsOpValid(const char[], char&);
 
 #endif

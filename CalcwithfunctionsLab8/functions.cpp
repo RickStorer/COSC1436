@@ -1,5 +1,6 @@
 #include "functions.h"
-#include <conio.h>
+#include <iostream>
+using namespace std;
 
 // Add, Subtract, Multiply, Divide
 double Add (double a, double b)
@@ -22,67 +23,23 @@ double Div (double a, double b)
 	return a / b;
 }
 
-// Read number
-double ReadInteger()
+bool IsOpValid(const char Operators [], char & Operator)
 {
-	char		c;
-	bool		IsNeg;
-	int			Num;
-	int			NumCharsEntered;
-
-	IsNeg = false;
-	Num = 0;
-	NumCharsEntered = 0;
-	while ((c = _getch()) != '\r')
-	{
-		switch (c)
+	int i;
+	do {
+		cout << "Enter an operator (+, -, *, /, C (Clear), X (Exit)): ";
+		cin >> Operator;
+		for (i = 0;i <= 8;i++)
 		{
-		case '0':
-		case '1':
-		case '2':
-		case '3':
-		case '4':
-		case '5':
-		case '6':
-		case '7':
-		case '8':
-		case '9':
-			_putch(c);
-			Num = (Num * 10) + (c - '0');
-			NumCharsEntered++;
-			break;
-		case '-':
-			if (NumCharsEntered == 0)
+			if (Operators[i] == Operator)
+				return true;
+			else;
+			if (Operators[i] == '\0')
 			{
-				IsNeg = true;
-				_putch('-');
-				NumCharsEntered++;
+				cout << "You have entered and invalid operator. Please try again." << endl;
+				break;
 			}
-			else
-				_putch('\a');
-			break;
-		case '\b':
-			if (NumCharsEntered > 0)
-			{
-				_putch('\b');
-				_putch(' ');
-				_putch('\b');
-				Num = Num / 10;
-				NumCharsEntered--;
-				if (NumCharsEntered == 0)
-					IsNeg = false;
-				else;
-			}
-			else
-				_putch('\a');
-			break;
-		default:
-			_putch('\a');
+			else;
 		}
-	}
-	_putch('\n');
-	if (IsNeg)
-		Num = -Num;
-	else;
-	return Num;
+	} while (true);
 }
