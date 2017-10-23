@@ -56,7 +56,6 @@ void main()
 			
 			cout << "You bet $" << Bet << endl;
 			DiceRoll(dt);
-			dt = 2;
 			if ((dt == 7) || (dt == 11))
 				{
 				Win(MaxBet, Bet);
