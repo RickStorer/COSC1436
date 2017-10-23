@@ -35,10 +35,7 @@ bool IsOpValid(const char Operators [], char & Operator)
 				return true;
 			else;
 			if (Operators[i] == '\0')
-			{
-				cout << "You have entered and invalid operator. Please try again." << endl;
-				break;
-			}
+				return false;
 			else;
 		}
 	} while (true);

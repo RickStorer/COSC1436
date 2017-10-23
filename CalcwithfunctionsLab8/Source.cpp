@@ -34,12 +34,15 @@ void main()
 
 		while ((Oper != 'x') || (Oper != 'X'))
 		{
-			//read an operator + 43, - 45, * 42, / 47, C 67, X 88, c 99, x 120
-			
-			if (IsOpValid(ValidOps, Oper))
-				cout << "\n";
-			else;
-					
+
+			//read an operator function
+			do {
+				if (IsOpValid(ValidOps, Oper))
+					break;
+				else
+					cout << "You have entered an invalid operator. Please try again." << endl;
+				} while (true);
+
 			if ((Oper == 'C') || (Oper == 'c') || (Oper == 'x') || (Oper == 'X') || (Oper == '+') || (Oper == '*') || (Oper == '-') || (Oper == '/'))
 			{
 				if ((Oper == 'x') || (Oper == 'X'))
