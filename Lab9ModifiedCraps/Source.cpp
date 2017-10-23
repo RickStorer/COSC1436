@@ -55,18 +55,18 @@ void main()
 		
 			
 			cout << "You bet $" << Bet << endl;
-			DiceRoll(dt);
+			DiceRoll(dt); //Function that lets the user roll the dice
 			if ((dt == 7) || (dt == 11))
 				{
-				Win(MaxBet, Bet);
-				KeepGoing();
+				Win(MaxBet, Bet); //Win function
+				KeepGoing(); //Function to ask the user if they wish to continue
 				continue;
 				}
 			else
 				if ((dt == 2) || (dt == 3) || (dt == 12))
 					{
-					Lose(MaxBet, Bet);
-					KeepGoing();
+					Lose(MaxBet, Bet); //Loss function
+					KeepGoing(); //Function to ask the user if they wish to continue
 					continue;
 					}
 				else
@@ -79,18 +79,18 @@ void main()
 				DiceRoll(dt);
 				if (dt == point)
 				{
-					Win(MaxBet, Bet);
+					Win(MaxBet, Bet); //Win function
 					break;
 				}
 				else
 					if (dt == 7)
 					{
-						Lose(MaxBet, Bet);
+						Lose(MaxBet, Bet); //Loss function
 						break;
 					}
 					else;		
 				}
-			KeepGoing();
+			KeepGoing(); //Function to ask the user if they wish to continue
 		} while (true);
 
 	system("pause");

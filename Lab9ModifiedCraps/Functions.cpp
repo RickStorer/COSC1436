@@ -5,11 +5,13 @@ using namespace std;
 #include "functions.h"
 #include <conio.h>
 
+//function to make the dice rolls random
 void InitDice()
 	{
 	srand(time(0));
 	}
 
+//Function that gets the random number for the die
 int ThrowDie()
 	{
 	int Die;
@@ -19,6 +21,7 @@ int ThrowDie()
 	return Die;
 	}
 
+//Win function
 double Win(double & maxbet, double bet)
 	{
 	maxbet += bet;
@@ -26,6 +29,7 @@ double Win(double & maxbet, double bet)
 	return maxbet;
 	}
 
+//Loss function
 double Lose(double & maxbet, double bet)
 	{
 	maxbet -= bet;
@@ -40,6 +44,7 @@ double Lose(double & maxbet, double bet)
 	return maxbet;
 	}
 
+//Function that lets the user roll the dice
 int DiceRoll(int & DiceTotal)
 {
 			int		d1;
@@ -61,6 +66,7 @@ int DiceRoll(int & DiceTotal)
 	return DiceTotal;
 }
 
+//Function to ask the user if they wish to continue
 void KeepGoing()
 {
 	char YoN;
