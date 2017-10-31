@@ -67,3 +67,72 @@ int ReadInteger()
 	else;
 	return Num;
 }
+
+int NumOfIntegersToSort()
+{
+	int		UserInput;
+
+	do {
+		cout << "How many integers would you like to have sorted? (1-20): ";
+		UserInput = ReadInteger();
+		if (UserInput > 20)
+		{
+			cout << "The number you have entered is too large. The maximum is 20. Try again.\n" << endl;
+			continue;
+		}
+		else;
+		if (UserInput < 1)
+		{
+			cout << "The number you have entered is too small. The minimum is 1. Try again.\n" << endl;
+			continue;
+		}
+		else
+			break;
+	} while (true);
+	return UserInput;
+}
+
+void FillArray(int Numbers[], int NumOfNums)
+{
+	int		i;
+
+	for (i = 0; i < NumOfNums; i++)
+	{
+		cout << "Enter number " << (i + 1) << ": ";
+		Numbers[i] = ReadInteger();
+	}
+}
+
+void DisplayArray(int Numbers[], int NumOfNums)
+{
+	int		i;
+
+	for (i = 0; i < NumOfNums; i++)
+	{
+		cout << Numbers[i];
+		if (i < (NumOfNums - 1))
+			cout << ", ";
+		else;
+	}
+}
+
+void Sort(int Numbers[], int NumOfNums)
+{
+	bool	Sorted;
+	int		i;
+	int		Temp;
+
+	do {
+		NumOfNums--;
+		Sorted = true;
+		for (i = 0; i < NumOfNums; i++)
+			if (Numbers[i] > Numbers[i + 1])
+			{
+				Temp = Numbers[i];
+				Numbers[i] = Numbers[i + 1];
+				Numbers[i + 1] = Temp;
+				Sorted = false;
+			}
+			else;
+	} while (!Sorted);
+}
