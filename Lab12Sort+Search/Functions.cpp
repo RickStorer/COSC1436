@@ -1,6 +1,7 @@
 #include "Functions.h"
 #include <iostream>
 #include <memory.h>
+#include <string.h>
 using namespace std;
 
 char * ReadLine()
@@ -30,26 +31,22 @@ char * ReadLine()
 	return pLine;
 }
 
-char** EnterNames(char ** Names)
+void EnterNames(char ** pNames, int NumNames)
 {
 	bool	Done = false;
 	char *	pLine;
-	int		NumNames;
+	int		i;
 
-	for (NumNames = 1; NumNames < 21; NumNames++)
+	for (i = 1; i <= NumNames; i++)
 	{
-			cout << "Enter name " << NumNames << ": ";
+			cout << "Enter name " << i << ": ";
 			pLine = ReadLine();
-			cout << pLine << endl;
 			Done = strcmp(pLine, "\0") == 0;
-			Names[NumNames - 1] = pLine;
-			cout << Names[NumNames - 1] << endl;
-			delete[] pLine;
+			pNames[i - 1] = pLine;
 			if (Done)
-				return Names;
+				break;
 			else;
 	}
-	return Names;
 }
 
 void Sort(char * Names[], int NumOfNames)
@@ -85,4 +82,38 @@ void DisplayNames(char * Names[], int NumOfNames)
 		else
 			cout << "\n\n";
 	}
+}
+
+void BinarySearch(char ** Names, int NumNames)
+{
+	int		First;
+	int		Last;
+	int		Middle;
+	char *	pLine;
+	int		i;
+
+	cout << "You can now search the list of names your provided. Leave the search field blank and press ennnter to exit." << endl;
+	do {
+		cout << "Enter a name to search for: ";
+		pLine = ReadLine();
+		for (i = 0; i < NumNames; i++)
+			{
+			First = 0;
+			Last = (strlen(Names[i])) - 1;
+			do {
+				Middle = (First + Last) / 2;
+				if (strcmp(pLine, Names[Middle]) == 0)
+					{
+					cout << pLine << " is in position " << Middle << endl;
+					return;
+					}
+				else
+					if (strcmp(pLine, Names[Middle]) < 0)
+						Last = Middle - 1;
+					else
+						First = Middle + 1;
+				} while (First <= Last);
+			}
+		cout << pLine << " is not in the list of names provided." << endl;
+		} while (pLine != "\0");
 }
