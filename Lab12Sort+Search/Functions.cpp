@@ -84,7 +84,7 @@ void DisplayNames(char * Names[], int NumOfNames)
 	}
 }
 
-void BinarySearch(char ** Names, int NumNames)
+bool BinarySearch(char ** Names, int NumNames)
 {
 	int		First;
 	int		Last;
@@ -92,10 +92,15 @@ void BinarySearch(char ** Names, int NumNames)
 	char *	pLine;
 	int		i;
 
-	cout << "You can now search the list of names your provided. Leave the search field blank and press ennnter to exit." << endl;
-	do {
+	
+	
 		cout << "Enter a name to search for: ";
 		pLine = ReadLine();
+		if (strcmp(pLine, "\0") == 0)
+			{
+			delete[] pLine;
+			return true;
+			}
 		for (i = 0; i < NumNames; i++)
 			{
 			First = 0;
@@ -104,8 +109,9 @@ void BinarySearch(char ** Names, int NumNames)
 				Middle = (First + Last) / 2;
 				if (strcmp(pLine, Names[Middle]) == 0)
 					{
-					cout << pLine << " is in position " << Middle << endl;
-					return;
+					cout << "The index of '"<< pLine << "' is " << Middle << endl;
+					delete[] pLine;
+					return false;
 					}
 				else
 					if (strcmp(pLine, Names[Middle]) < 0)
@@ -115,5 +121,5 @@ void BinarySearch(char ** Names, int NumNames)
 				} while (First <= Last);
 			}
 		cout << pLine << " is not in the list of names provided." << endl;
-		} while (pLine != "\0");
+		delete[] pLine;
 }
