@@ -12,7 +12,7 @@ char * CommandNames	[] =	{
 							"Shutdown"
 							};
 
-Commands GetCmd (bool AlphaInit, bool BravoInit, bool LoungeInit)
+Commands GetCmd (bool AlfaInit, bool BravoInit, bool LoungeInit)
 	{
 	char *		Cmd;
 	Commands	WhichCmd;
@@ -22,7 +22,9 @@ Commands GetCmd (bool AlphaInit, bool BravoInit, bool LoungeInit)
 	for (WhichCmd = CmdAlfa; WhichCmd < NumCmds; WhichCmd = (Commands) (WhichCmd + 1))
 		if (_strcmpi(Cmd, CommandNames[WhichCmd]) == 0)	// find which command we just read
 			{
-			if (((_strcmpi(Cmd, CommandNames[0]) == 0) || (_strcmpi(Cmd, CommandNames[1]) == 0) || (_strcmpi(Cmd, CommandNames[2]) == 0)) || (AlphaInit && BravoInit && LoungeInit))
+			if (((_strcmpi(Cmd, CommandNames[0]) == 0) && (AlfaInit)) || ((_strcmpi(Cmd, CommandNames[1]) == 0) && (BravoInit)) || ((_strcmpi(Cmd, CommandNames[2]) == 0) && (LoungeInit)))
+				return DuplicateCmd;
+			if (((_strcmpi(Cmd, CommandNames[0]) == 0) || (_strcmpi(Cmd, CommandNames[1]) == 0) || (_strcmpi(Cmd, CommandNames[2]) == 0)) || (AlfaInit && BravoInit && LoungeInit))
 				{
 				delete[] Cmd;		// need to make sure we clean up dynamic memory
 				return WhichCmd;
@@ -38,3 +40,4 @@ Commands GetCmd (bool AlphaInit, bool BravoInit, bool LoungeInit)
 	delete [] Cmd;		// need to make sure we clean up dynamic memory
 	return InvalidCmd;
 	}
+

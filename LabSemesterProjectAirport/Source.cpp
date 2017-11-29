@@ -29,36 +29,43 @@ void main()
 	bool		LoungeInit	= false;
 
 	//	initialize the planes and the lounge
-	cout << "> ";
+	
 	//	get a command
 	//	depending on which command, we may read in different information
 
 	//	remember that Alfa, Bravo, and Lounge commands must be done before any other commands
 	//	and those commands are only done once in the program
 	do {
+		cout << "> ";
+
 		switch (GetCmd(AlfaInit, BravoInit, LoungeInit))
 		{
 		case CmdAlfa:
-			AlfaInit = true;
-			//	get the size (number of seats on plane)
-			Alfa.NumSeats = ReadInteger();	// could check here to make sure they don't enter 0 for number of seats
-			Alfa.NumEmptySeats = Alfa.NumSeats;
-			Alfa.NumParties = 0;
-			Alfa.Parties = new Party[Alfa.NumSeats];
+			PlaneInit(AlfaInit, Alfa);
 			break;
 		case CmdBravo:
+			PlaneInit(BravoInit, Bravo);
+			break;
 		case CmdLounge:
+			PlaneInit(LoungeInit, Lounge);
+			break;
 		case CmdFly:
 			switch (GetPlane())
 			{
 			case PlaneAlfa:
+				FlyPlane(PlaneAlfa, Alfa, Lounge);
+				break;
 			case PlaneBravo:
+				FlyPlane(PlaneBravo, Bravo, Lounge);
+				break;
 			case InvalidPlane:
-				// information is not correct
+				cout << "You have entered an invalid plane name. Try again." << endl;
+				break;
 			default:
 				cout << "Internal error 303, please contact customer support" << endl;
 				exit(0);
 			}
+			break;
 		case CmdArrive:
 			ArrivingParty.Which = GetPlane();		//	Get which plane we want on
 			ArrivingParty.Name = ReadString();	//	get party name
@@ -88,7 +95,7 @@ void main()
 			}
 			break;
 		case CmdShutdown:
-			while (/* someone is on Alfa */)
+			while (Alfa.NumEmptySeats != 0)
 				// FlyPlane (Alfa);
 				// do same loop for Bravo
 				// make sure we clean up the dynamic array holding parties for each plane

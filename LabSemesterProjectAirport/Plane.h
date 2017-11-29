@@ -26,5 +26,6 @@ struct PlaneInfo
 
 Plane	GetPlane ();
 void	FlyPlane (Plane, PlaneInfo &, PlaneInfo &);
+void PlaneInit(bool &, PlaneInfo &);
 
 #endif
