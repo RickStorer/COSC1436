@@ -31,11 +31,44 @@ Plane GetPlane ()
 
 void FlyPlane (Plane WhichPlane, PlaneInfo & P, PlaneInfo & L)
 	{
+	int i;
+	int x;
+	int y;
+
 	do	{
-		// print the names of all parties on the plane
-		// delete each of the names
-		// reset number of empty seats and number of parties
-		// move people from lounge onto plane
+		cout << "Plane " << PlaneNames[WhichPlane] << " has delivered parties: ";
+		for	(i = 0; i < P.NumParties; i++)						// print the names of all parties on the plane
+		{														
+			cout << P.Parties[i].Name;
+			if (i == (P.NumParties - 1))
+				cout << "." << endl;
+			else
+				cout << ", ";
+			delete [] P.Parties[i].Name;// delete each of the names
+		}
+		P.NumEmptySeats = P.NumSeats;							// reset number of empty seats and number of parties
+		P.NumParties = 0;
+		for (i = 0, x = 0; i < L.NumParties; i++)				// move people from lounge onto plane
+			{
+			if (L.Parties[i].Which == WhichPlane)
+				{
+				if (L.Parties[i].Size <= P.NumEmptySeats)
+					{
+					P.Parties[x] = L.Parties[i];
+					for (y = (i + 1); y < L.NumParties; y++)
+						{
+						L.Parties[y - 1] = L.Parties[y];
+						}
+					i--;
+					P.NumEmptySeats -= P.Parties[x].Size;
+					P.NumParties++;
+					L.NumParties--;
+					x++;
+					}
+				else;
+				}
+			else;
+			}
 		} while (P.NumEmptySeats == 0);
 	}
 

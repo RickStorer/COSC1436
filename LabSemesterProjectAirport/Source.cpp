@@ -59,7 +59,7 @@ void main()
 				FlyPlane(PlaneBravo, Bravo, Lounge);
 				break;
 			case InvalidPlane:
-				cout << "You have entered an invalid plane name. Try again." << endl;
+				cout << "You have entered an invalid plane name. Please re-enter commmand." << endl;
 				break;
 			default:
 				cout << "Internal error 303, please contact customer support" << endl;
@@ -79,20 +79,21 @@ void main()
 				PartyArrival(ArrivingParty, PlaneBravo, Bravo, Lounge);
 				break;
 			case InvalidPlane:
-				// information is not correct
+				cout << "You have entered an invalid plane name. Please re-enter commmand." << endl;
+				break;
 			default:
 				cout << "Internal error 202, please contact customer support" << endl;
 				exit(0);
 			}
 			break;
 		case CmdShutdown:
-			while (Alfa.NumEmptySeats != 0)
+			while (Alfa.NumEmptySeats != Alfa.NumSeats)
 				// FlyPlane (Alfa);
 				// do same loop for Bravo
 				// make sure we clean up the dynamic array holding parties for each plane
 				break;
 		case InvalidCmd:
-			cout << "Invalid Command, please re-enter" << endl;
+			cout << "Invalid Command, Please re-enter commmand." << endl;
 			break;
 		case DuplicateCmd:
 			cout << "That command has already been entered and may only be entered once. Please try again." << endl;
