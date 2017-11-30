@@ -24,8 +24,9 @@ struct PlaneInfo
 	Party *		Parties;
 	};
 
-Plane	GetPlane ();
-void	FlyPlane (Plane, PlaneInfo &, PlaneInfo &);
-void PlaneInit(bool &, PlaneInfo &);
+Plane	GetPlane	();
+void	FlyPlane	(Plane, PlaneInfo &, PlaneInfo &);
+void	PlaneInit	(bool &, PlaneInfo &);
+void	PartyArrival(Party &, Plane, PlaneInfo &, PlaneInfo &);
 
 #endif

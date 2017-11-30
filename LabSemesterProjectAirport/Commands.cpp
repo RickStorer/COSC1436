@@ -1,5 +1,6 @@
+#include <iostream>
+using namespace std;
 #include <string.h>
-
 #include "Commands.h"
 #include "ReadString.h"
 
@@ -40,4 +41,3 @@ Commands GetCmd (bool AlfaInit, bool BravoInit, bool LoungeInit)
 	delete [] Cmd;		// need to make sure we clean up dynamic memory
 	return InvalidCmd;
 	}
-

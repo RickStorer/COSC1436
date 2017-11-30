@@ -16,6 +16,6 @@ enum Commands	{
 				NumCmds
 				};
 
-Commands GetCmd (bool ,bool ,bool);
+Commands	GetCmd		(bool, bool, bool);
 
 #endif

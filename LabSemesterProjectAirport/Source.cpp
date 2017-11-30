@@ -67,26 +67,17 @@ void main()
 			}
 			break;
 		case CmdArrive:
-			ArrivingParty.Which = GetPlane();		//	Get which plane we want on
-			ArrivingParty.Name = ReadString();	//	get party name
-			ArrivingParty.Size = ReadInteger();	//	get size of party
+			ArrivingParty.Which = GetPlane();					//	Get which plane we want on
+			ArrivingParty.Name = ReadString();					//	get party name
+			ArrivingParty.Size = ReadInteger();					//	get size of party
 			switch (ArrivingParty.Which)
 			{
 			case PlaneAlfa:
-				// can the party ever fit on the plane
-				//			no, turn party away
-				//		else they could possibly fit
-				//			are there enough empty seats now?
-				//					yes, put party on plane
-				//					is the plane full?
-				//							yes, fly plane (we will write a function for this)
-				//						else 
-				//							plane is not full, so nothing else to do now
-				//				else
-				//					party does not fit now, can they fit in the lounge?
-				//							yes, move party into lounge
-				//							no, turn party away
+				PartyArrival(ArrivingParty, PlaneAlfa, Alfa, Lounge);
+				break;
 			case PlaneBravo:
+				PartyArrival(ArrivingParty, PlaneBravo, Bravo, Lounge);
+				break;
 			case InvalidPlane:
 				// information is not correct
 			default:
