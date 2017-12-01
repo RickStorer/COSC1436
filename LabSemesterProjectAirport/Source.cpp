@@ -28,26 +28,20 @@ void main()
 	bool		BravoInit	= false;
 	bool		LoungeInit	= false;
 
-	//	initialize the planes and the lounge
-	
-	//	get a command
-	//	depending on which command, we may read in different information
 
-	//	remember that Alfa, Bravo, and Lounge commands must be done before any other commands
-	//	and those commands are only done once in the program
 	do {
 		cout << "> ";
 
 		switch (GetCmd(AlfaInit, BravoInit, LoungeInit))
 		{
 		case CmdAlfa:
-			PlaneInit(AlfaInit, Alfa);
+			PlaneInit(AlfaInit, PlaneAlfa, Alfa);
 			break;
 		case CmdBravo:
-			PlaneInit(BravoInit, Bravo);
+			PlaneInit(BravoInit, PlaneBravo, Bravo);
 			break;
 		case CmdLounge:
-			PlaneInit(LoungeInit, Lounge);
+			PlaneInit(LoungeInit, PlaneLounge, Lounge);
 			break;
 		case CmdFly:
 			switch (GetPlane())
@@ -62,7 +56,7 @@ void main()
 				cout << "You have entered an invalid plane name. Please re-enter commmand." << endl;
 				break;
 			default:
-				cout << "Internal error 303, please contact customer support" << endl;
+				cout << "Internal error 303, please contact customer support." << endl;
 				exit(0);
 			}
 			break;
@@ -82,16 +76,18 @@ void main()
 				cout << "You have entered an invalid plane name. Please re-enter commmand." << endl;
 				break;
 			default:
-				cout << "Internal error 202, please contact customer support" << endl;
+				cout << "Internal error 202, please contact customer support." << endl;
 				exit(0);
 			}
 			break;
 		case CmdShutdown:
-			while (Alfa.NumEmptySeats != Alfa.NumSeats)
-				// FlyPlane (Alfa);
-				// do same loop for Bravo
-				// make sure we clean up the dynamic array holding parties for each plane
-				break;
+			cout << "Performing shutdown." << endl;
+			ShutdownPlane(PlaneAlfa, Alfa, Lounge);
+			ShutdownPlane(PlaneBravo, Bravo, Lounge);
+			delete [] Lounge.Parties;
+			cout << "Shutdown complete." << endl;
+			system ("pause");
+			exit (0);
 		case InvalidCmd:
 			cout << "Invalid Command, Please re-enter commmand." << endl;
 			break;
@@ -102,7 +98,7 @@ void main()
 			cout << "You must enter the Alfa, Bravo, and Lounge commands first." << endl;
 			break;
 		default:
-			cout << "Internal error 101, please contact customer support" << endl;
+			cout << "Internal error 101, please contact customer support." << endl;
 			exit(0);
 		}
 	} while (true);

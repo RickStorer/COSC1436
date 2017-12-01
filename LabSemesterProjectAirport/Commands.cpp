@@ -24,7 +24,10 @@ Commands GetCmd (bool AlfaInit, bool BravoInit, bool LoungeInit)
 		if (_strcmpi(Cmd, CommandNames[WhichCmd]) == 0)	// find which command we just read
 			{
 			if (((_strcmpi(Cmd, CommandNames[0]) == 0) && (AlfaInit)) || ((_strcmpi(Cmd, CommandNames[1]) == 0) && (BravoInit)) || ((_strcmpi(Cmd, CommandNames[2]) == 0) && (LoungeInit)))
+				{
+				delete[] Cmd;
 				return DuplicateCmd;
+				}
 			if (((_strcmpi(Cmd, CommandNames[0]) == 0) || (_strcmpi(Cmd, CommandNames[1]) == 0) || (_strcmpi(Cmd, CommandNames[2]) == 0)) || (AlfaInit && BravoInit && LoungeInit))
 				{
 				delete[] Cmd;		// need to make sure we clean up dynamic memory

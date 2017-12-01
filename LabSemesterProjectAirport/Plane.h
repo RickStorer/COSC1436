@@ -5,6 +5,7 @@ enum Plane	{
 			InvalidPlane = -1,
 			PlaneAlfa,
 			PlaneBravo,
+			PlaneLounge,
 
 			NumPlanes
 			};
@@ -26,7 +27,8 @@ struct PlaneInfo
 
 Plane	GetPlane	();
 void	FlyPlane	(Plane, PlaneInfo &, PlaneInfo &);
-void	PlaneInit	(bool &, PlaneInfo &);
+void	PlaneInit	(bool &, Plane, PlaneInfo &);
 void	PartyArrival(Party &, Plane, PlaneInfo &, PlaneInfo &);
+void	ShutdownPlane(Plane, PlaneInfo &, PlaneInfo &);
 
 #endif
